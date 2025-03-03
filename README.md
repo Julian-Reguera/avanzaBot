@@ -1,2 +1,3 @@
 # avanzaBot
-un bot que notifica cuando un bus se libera 
+un bot que notifica cuando un bus se libera.
+De momento queda por añadir una interfaz grafica que permita buscar los buses sin tener que tocar el codigo de avanzaApi.py asi como una parte del código que permita que se compren automáticamente los billetes y puedas poner una lista de los billetes que quieres de la semana con varios billetes en un mismo día y prioridad para indicar cual quieres más que otro. A esto habría que meterle procesos para que mire en diferentes paginas a la vez y una interfaz web con usuarios para masificarlo manteniendo constantes el número de peticiones por minuto. 
