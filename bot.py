@@ -22,10 +22,11 @@ class bot:
         ini , pantReservas = self.__iniciarWeb(origen,destino,fecha)
 
         disponible = False
+        cont = 0
                                                               
         while not self.__disponibles(pantReservas,origen,destino,fecha):
             time.sleep(espera)
-            if cont == 20:
+            if cont == 10:
                 cont = 0
                 ini.cerrar()
                 ini , pantReservas = self.__iniciarWeb(origen,destino,fecha)
@@ -33,9 +34,6 @@ class bot:
                 pantReservas.refrescar()
                 pantReservas.esperarViajesCargados()
             cont += 1
-
-            for i in self.horarios[fecha]:
-                disponible = disponible or pantReservas.viajeDisponible(i)
         
         ini.cerrar()
 
