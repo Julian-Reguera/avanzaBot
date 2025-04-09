@@ -4,14 +4,19 @@ import pantallaInicio
 import pantallaReserva
 import winsound
 import bot as botAvanza
+from plyer import notification
 
 bot = botAvanza.bot(True)
 
-bot.anadirBillete("SEGOVIA (todas las paradas)","Madrid Moncloa",datetime(2025, 3, 31), "07:00", True)
-bot.anadirBillete("SEGOVIA (todas las paradas)","Madrid Moncloa",datetime(2025, 3, 31), "07:00", False)
-bot.anadirBillete("SEGOVIA (todas las paradas)","Madrid Moncloa",datetime(2025, 3, 31), "07:15", True)
-bot.anadirBillete("SEGOVIA (todas las paradas)","Madrid Moncloa",datetime(2025, 3, 31), "07:15", False)
+bot.anadirBillete("Madrid Moncloa","SEGOVIA (todas las paradas)",datetime(2025, 4, 9), "21:00", True)
 
-bot.buscarBilletes("SEGOVIA (todas las paradas)","Madrid Moncloa",datetime(2025, 3, 31),30) #origen,destino,fecha,espera
+bot.buscarBilletes("Madrid Moncloa","SEGOVIA (todas las paradas)",datetime(2025, 4, 9),30) #origen,destino,fecha,espera
+
+notification.notify(
+    title="Avanza Bot",
+    message="¡Se ha encontrado un billete disponible!",
+    app_name="Avanza Bot",
+    timeout=10  # Duración de la notificación en segundos
+)
 
 winsound.Beep(1000, 10000)  #Frecuencia de 1000 Hz, duración de 10000 ms (10 segundo)
