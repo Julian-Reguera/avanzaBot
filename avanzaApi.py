@@ -6,11 +6,13 @@ import winsound
 import bot as botAvanza
 from plyer import notification
 
-bot = botAvanza.bot(True)
+bot = botAvanza.bot(False)
 
-bot.anadirBillete("Madrid Moncloa","SEGOVIA (todas las paradas)",datetime(2025, 4, 9), "21:00", True)
+bot.anadirBillete("Madrid Moncloa","SEGOVIA (todas las paradas)",datetime(2025, 4, 10), "19:45", True)
+bot.anadirBillete("Madrid Moncloa","SEGOVIA (todas las paradas)",datetime(2025, 4, 10), "20:15", True)
+bot.anadirBillete("Madrid Moncloa","SEGOVIA (todas las paradas)",datetime(2025, 4, 10), "20:30", False)
 
-bot.buscarBilletes("Madrid Moncloa","SEGOVIA (todas las paradas)",datetime(2025, 4, 9),30) #origen,destino,fecha,espera
+bot.buscarBilletes("Madrid Moncloa","SEGOVIA (todas las paradas)",datetime(2025, 4, 10),30) #origen,destino,fecha,espera
 
 notification.notify(
     title="Avanza Bot",

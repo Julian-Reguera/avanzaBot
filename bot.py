@@ -8,7 +8,7 @@ class bot:
         self.horarios = {}
 
     def anadirBillete(self, origen, destino, fecha, hora, directo):
-        if fecha not in self.horarios:
+        if (origen,destino,fecha) not in self.horarios:
             self.horarios[(origen,destino,fecha)] = []
         if directo:
             self.horarios[(origen,destino,fecha)].append(pantallaReserva.Bus(horaIda=hora,tipoRuta="Directo"))
@@ -17,6 +17,7 @@ class bot:
             self.horarios[(origen,destino,fecha)].append(pantallaReserva.Bus(horaIda=hora,tipoRuta="SemiDirecto"))
             self.horarios[(origen,destino,fecha)].append(pantallaReserva.Bus(horaIda=hora,tipoRuta="Semidirecto"))
             self.horarios[(origen,destino,fecha)].append(pantallaReserva.Bus(horaIda=hora,tipoRuta="semidirecto"))
+            self.horarios[(origen,destino,fecha)].append(pantallaReserva.Bus(horaIda=hora,tipoRuta="semiDirecto"))
     
     def buscarBilletes(self, origen,destino,fecha,espera):
         ini , pantReservas = self.__iniciarWeb(origen,destino,fecha)
@@ -39,11 +40,15 @@ class bot:
 
     def __disponibles(self,pantReservas,origen,destino,fecha):
         disponible = False
+        cont = 0
         for i in self.horarios[(origen,destino,fecha)]:
+                
                 try:
+                    print("prueba: "+i.horaIda+" "+i.tipoRuta)
                     disponible = disponible or pantReservas.viajeDisponible(i)
-                except Exception:
-                    pass
+                    print("prueba: "+i.horaIda+" "+i.tipoRuta)
+                except:
+                    cont += 1
         return disponible
 
     def __iniciarWeb(self,origen,destino,fecha):

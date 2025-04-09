@@ -24,10 +24,11 @@ def tramaBusDisponible(bus):
     
     if bus.horaVuelta != None:
         strBusqueda += "[data-arrival='"+bus.horaVuelta+"']"
-    if bus.origen != None:
-        strBusqueda += "[data-origen='"+bus.origen+"']"
-    if bus.destino != None:
-        strBusqueda += "[data-destino='"+bus.destino+"']"
+    
+    #if bus.origen != None:
+    #    strBusqueda += "[data-origen='"+bus.origen+"']"
+    #if bus.destino != None:
+    #    strBusqueda += "[data-destino='"+bus.destino+"']"
         
     return strBusqueda     
 
